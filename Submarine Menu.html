@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submarine Menu</title>
+    <style>
+        /* Top bar styles */
+        .top-bar {
+            width: 100%;
+            height: 30px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: #c0c0c0;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #000;
+            text-decoration: none;
+        }
+
+	.logo-image {
+    	    width: 40px;
+    	    height: 40px;
+	    margin-right: 10px;
+            border-radius: 4px;
+	}
+
+        .logo-text {
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-buttons {
+            background: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .auth-buttons a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .auth-buttons span {
+            margin: 0 8px;
+            color: #666;
+        }
+
+	table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <div class="logo-icon"></div>
+		<img src="burger.png" alt="MOS Burgers Logo" class="logo-image"
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+        
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submarine Menu</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Price (LKR)</th>
+            <th>Discount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr>
+    <td>B1016</td>
+    <td>Crispy Chicken Submarine (Large)</td>
+    <td>2000.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1016')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1017</td>
+    <td>Crispy Chicken Submarine (Regular)</td>
+    <td>1500.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1017')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1018</td>
+    <td>Chicken Submarine (Large)</td>
+    <td>1800.00</td>
+    <td>3%</td>
+    <td><button onclick="addToCart('B1018')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1019</td>
+    <td>Chicken Submarine (Regular)</td>
+    <td>1400.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1019')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1020</td>
+    <td>Grinder Submarine</td>
+    <td>2300.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1020')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1021</td>
+    <td>Cheese Submarine</td>
+    <td>2200.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1021')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1022</td>
+    <td>Double Cheese n Chicken Submarine</td>
+    <td>1900.00</td>
+    <td>16%</td>
+    <td><button onclick="addToCart('B1022')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1023</td>
+    <td>Special Horgie Submarine</td>
+    <td>2800.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1023')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1024</td>
+    <td>MOS Special Submarine</td>
+    <td>3000.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1024')">Add to Cart</button></td>
+</tr>
+
+    </tbody>
+</table>
+
+<script>
+    function addToCart(itemCode) {
+        alert(`Item ${itemCode} added to cart!`);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS Burgers - Reports</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Basic Reset and Font */
+        * { 
+		margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; 
+	}
+        body { 
+		background-color: #f5f5f5; 
+	}
+
+        /* Top Bar */
+        .top-bar { 
+		width: 100%; height: 30px; background: white; border-bottom: 1px solid #eee; display: flex; align-items: center; padding: 0 20px; 
+	}
+        .dots { 
+		display: flex; gap: 5px; 
+  	}
+        .dot { 
+		width: 12px; height: 12px; border-radius: 50%; background: #ddd; 
+	}
+
+        /* Navbar */
+        .navbar { 
+		background: #c0c0c0; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; 
+	}
+        .logo-section { 
+		display: flex; align-items: center; gap: 8px; color: #000; text-decoration: none; 
+	}
+        .logo-image { 
+		width: 40px; height: 40px; margin-right: 10px; border-radius: 4px; 
+	}
+        .logo-text { 
+		font-weight: 500; 
+	}
+        .nav-links { 
+		display: flex; gap: 40px; margin: 0 auto; padding-left: 50px; 
+	}
+        .nav-links a { 
+		text-decoration: none; color: #000; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; 
+	}
+        .auth-buttons { 
+		background: #e0e0e0; padding: 8px 16px; border-radius: 20px; font-size: 14px; 
+	}
+        .auth-buttons a { 
+		text-decoration: none; color: #000; 
+	}
+        .auth-buttons span { 
+		margin: 0 8px; color: #666; 
+	}
+
+        /* Reports Dashboard Styles */
+        .reports-container { 
+			max-width: 1200px; margin: 20px auto; padding: 20px; 
+	}
+        .reports-section { 
+			background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+	}
+        .reports-section h2 { 
+			margin-bottom: 15px; color: #333; 
+	}
+
+        /* Date Range Picker */
+        .date-range { 
+			display: flex; align-items: center; gap: 10px; 
+	}
+        .date-input { 
+			padding: 8px; border: 1px solid #ccc; border-radius: 4px; 
+	}
+        .filter-button { 
+			padding: 8px 16px; background-color: #eee; border: none; border-radius: 4px; cursor: pointer; 
+	}
+
+        /* KPIs */
+        .kpis { 
+		display: flex; justify-content: space-around; 
+	}
+        .kpi { 
+		text-align: center; 
+	}
+        .kpi-value { 
+		font-size: 20px; font-weight: 600; margin-top: 5px; 
+	}
+
+        /* Chart */
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <img src="burger.png" alt="MOS Burgers Logo" class="logo-image">
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="reports-container">
+        <div class="reports-section">
+            <h2>Reports Dashboard</h2>
+            <div class="date-range">
+                <input type="date" class="date-input">
+                <input type="date" class="date-input">
+                <button class="filter-button">Filter</button>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <h2>Key Performance Indicators (KPIs)</h2>
+            <div class="kpis">
+                <div class="kpi">
+                    <h3>Total Sales</h3>
+                    <div class="kpi-value">TotalSales</div>
+                </div>
+                <div class="kpi">
+                    <h3>Total Orders</h3>
+                    <div class="kpi-value">TotalOrders</div>
+                </div>
+                <div class="kpi">
+                    <h3>New Customers</h3>
+                    <div class="kpi-value">NewCustomers</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <h2>Data Visualization Charts</h2>
+            <div class="chart-container">
+                <canvas id="salesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const salesData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Monthly Sales',
+                data: [1500, 1800, 2200, 1900, 2500, 2800, 3000, 2700, 2400, 2900, 3200, 3500],
+                borderColor: 'orange',
+                backgroundColor: 'rgba(255, 165, 0, 0.2)',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        };
+
+        const salesChart = new Chart(ctx, {
+            type: 'line',
+            data: salesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sales'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sales Over Time',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

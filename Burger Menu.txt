@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Menu</title>
+    <style>
+        /* Top bar styles */
+        .top-bar {
+            width: 100%;
+            height: 30px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: #c0c0c0;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #000;
+            text-decoration: none;
+        }
+
+	.logo-image {
+    	    width: 40px;
+    	    height: 40px;
+	    margin-right: 10px;
+            border-radius: 4px;
+	}
+
+        .logo-text {
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-buttons {
+            background: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .auth-buttons a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .auth-buttons span {
+            margin: 0 8px;
+            color: #666;
+        }
+
+	table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <div class="logo-icon"></div>
+		<img src="burger.png" alt="MOS Burgers Logo" class="logo-image"
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+        
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Burger Menu</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Price (LKR)</th>
+            <th>Discount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>B1001</td>
+            <td>Classic Burger (Large)</td>
+            <td>1500.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1001')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1002</td>
+            <td>Classic Burger (Regular)</td>
+            <td>750.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1002')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1003</td>
+            <td>Turkey Burger</td>
+            <td>1600.00</td>
+            <td>15%</td>
+            <td><button onclick="addToCart('B1003')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1004</td>
+            <td>Chicken Burger (Large)</td>
+            <td>1400.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1004')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1005</td>
+            <td>Chicken Burger (Regular)</td>
+            <td>800.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1005')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1006</td>
+            <td>Cheese Burger (Large)</td>
+            <td>1000.00</td>
+            <td>20%</td>
+            <td><button onclick="addToCart('B1006')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1007</td>
+            <td>Cheese Burger (Regular)</td>
+            <td>600.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1007')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1008</td>
+            <td>Bacon Burger</td>
+            <td>650.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1008')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1009</td>
+            <td>Shawarma Burger</td>
+            <td>800.00</td>
+            <td>15%</td>
+            <td><button onclick="addToCart('B1009')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1010</td>
+            <td>Olive Burger</td>
+            <td>1800.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1010')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1012</td>
+            <td>Double-Cheese Burger</td>
+            <td>1250.00</td>
+            <td>20%</td>
+            <td><button onclick="addToCart('B1012')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1013</td>
+            <td>Crispy Chicken Burger (Regular)</td>
+            <td>1200.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1013')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1014</td>
+            <td>Crispy Chicken Burger (Large)</td>
+            <td>1600.00</td>
+            <td>10%</td>
+            <td><button onclick="addToCart('B1014')">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>B1015</td>
+            <td>Paneer Burger</td>
+            <td>900.00</td>
+            <td>-</td>
+            <td><button onclick="addToCart('B1015')">Add to Cart</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function addToCart(itemCode) {
+        alert(`Item ${itemCode} added to cart!`);
+    }
+</script>
+
+</body>
+</html>

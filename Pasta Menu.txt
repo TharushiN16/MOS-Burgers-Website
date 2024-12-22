@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta Menu</title>
+    <style>
+        /* Top bar styles */
+        .top-bar {
+            width: 100%;
+            height: 30px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: #c0c0c0;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #000;
+            text-decoration: none;
+        }
+
+	.logo-image {
+    	    width: 40px;
+    	    height: 40px;
+	    margin-right: 10px;
+            border-radius: 4px;
+	}
+
+        .logo-text {
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-buttons {
+            background: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .auth-buttons a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .auth-buttons span {
+            margin: 0 8px;
+            color: #666;
+        }
+
+	table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <div class="logo-icon"></div>
+		<img src="burger.png" alt="MOS Burgers Logo" class="logo-image"
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+        
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pasta Menu</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Price (LKR)</th>
+            <th>Discount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr>
+    <td>B1031</td>
+    <td>Chicken n Cheese Pasta</td>
+    <td>1600.00</td>
+    <td>15%</td>
+    <td><button onclick="addToCart('B1031')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1032</td>
+    <td>Chicken Penne Pasta</td>
+    <td>1700.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1032')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1033</td>
+    <td>Ground Turkey Pasta Bake</td>
+    <td>2900.00</td>
+    <td>10%</td>
+    <td><button onclick="addToCart('B1033')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1034</td>
+    <td>Creamy Shrimp Pasta</td>
+    <td>2000.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1034')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1035</td>
+    <td>Lemon Butter Pasta</td>
+    <td>1950.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1035')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1036</td>
+    <td>Tagliatelle Pasta</td>
+    <td>2400.00</td>
+    <td>-</td>
+    <td><button onclick="addToCart('B1036')">Add to Cart</button></td>
+</tr>
+<tr>
+    <td>B1037</td>
+    <td>Baked Ravioli</td>
+    <td>2000.00</td>
+    <td>1%</td>
+    <td><button onclick="addToCart('B1037')">Add to Cart</button></td>
+</tr>
+
+    </tbody>
+</table>
+
+<script>
+    function addToCart(itemCode) {
+        alert(`Item ${itemCode} added to cart!`);
+    }
+</script>
+
+</body>
+</html>
