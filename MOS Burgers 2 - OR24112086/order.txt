@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS Burgers - Order</title>
+    <style>
+	body {
+            font-family: sans-serif;
+            margin: 0; 
+            background-color: #f5f5f5; 
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+
+        .top-bar {
+            width: 100%;
+            height: 30px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .navbar {
+            background: #c0c0c0;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-buttons {
+            background: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .auth-buttons a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .auth-buttons span {
+            margin: 0 8px;
+            color: #666;
+        }
+
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav li {
+            margin-left: 20px; 
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .cart-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; 
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .cart-item:last-child {
+            border-bottom: none; 
+        }
+
+        .qty-controls {
+            display: inline-flex; 
+            align-items: center;
+        }
+
+        .qty-controls button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qty-controls input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+        }
+
+        .order-summary {
+            background-color: #555;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .order-summary button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .top-bar{
+            height: 30px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        .top-bar .dots{
+            display: flex;
+            gap: 5px;
+            padding: 5px 10px;
+        }
+        .top-bar .dot{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+	
+	.error-message {
+            color: red;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .cart-item img, .item img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle; /* Align image vertically */
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        #item-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .item button {
+            padding: 8px 16px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .order-summary {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+         
+	<nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <img src="burger.png" alt="MOS Burgers Logo" class="logo-image">
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+
+         <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;Your Cart</h1>
+
+    <div id="item-list"></div>
+
+    <div class="cart-section">
+        <div class="cart-item cart-header">
+            <div></div><div>Item</div><div>Qty</div><div>Price</div><div>Total</div>
+        </div>
+        <div class="cart-items-container"></div>
+    </div>
+
+    <div class="order-summary">
+        <div id="cart-total">Total: Rs. 0.00</div>
+        <button id="proceed-button">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        const itemList = document.getElementById('item-list');
+        const cartItemsContainer = document.querySelector('.cart-items-container');
+        const proceedButton = document.getElementById('proceed-button');
+        const cartTotalDisplay = document.getElementById('cart-total');
+
+        let cart = [];
+        let itemsData = [];
+
+        async function fetchItems() {
+            try {
+                const response = await fetch('items.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                itemsData = await response.json();
+                renderItems();
+            } catch (error) {
+                console.error("Error fetching items:", error);
+                itemList.innerHTML = "<p style='color:red;'>&nbsp;&nbsp;&nbsp;Error loading items. Please try again later.</p>";
+            }
+        }
+
+        function renderItems() {
+            itemList.innerHTML = '';
+            itemsData.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>Rs. ${item.price.toFixed(2)}</p>
+                    <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                `;
+                itemList.appendChild(itemDiv);
+                itemDiv.querySelector('.add-to-cart').addEventListener('click', () => addToCart(item.id));
+            });
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            cart.forEach(cartItem => {
+                const itemData = itemsData.find(item => item.id === cartItem.id);
+                if (!itemData) return;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <div><img src="${itemData.image}" alt="${itemData.name}"></div>
+                    <div>${itemData.name}</div>
+                    <div class="qty-controls">
+                        <button class="dec-button">-</button>
+                        <input type="number" class="qty-input" value="${cartItem.qty}" min="0">
+                        <button class="inc-button">+</button>
+                    </div>
+                    <div class="price">Rs.${itemData.price.toFixed(2)}</div>
+                    <div class="total">Rs.${(itemData.price * cartItem.qty).toFixed(2)}</div>
+                    <div class="error-message"></div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+
+                const qtyInput = itemDiv.querySelector('.qty-input');
+                const incButton = itemDiv.querySelector('.inc-button');
+                const decButton = itemDiv.querySelector('.dec-button');
+                const totalElement = itemDiv.querySelector('.total');
+                const errorMessageElement = itemDiv.querySelector('.error-message');
+
+                qtyInput.addEventListener('input', () => updateQuantity(cartItem.id, parseInt(qtyInput.value), errorMessageElement, totalElement));
+                incButton.addEventListener('click', () => updateQuantity(cartItem.id, cartItem.qty + 1, errorMessageElement, totalElement));
+                decButton.addEventListener('click', () => updateQuantity(cartItem.id, cartItem.qty - 1, errorMessageElement, totalElement));
+            });
+            updateCartTotal();
+        }
+
+        function updateQuantity(itemId, newQty, errorMessageElement, totalElement) {
+            try {
+                if (isNaN(newQty) || newQty < 0) {
+                    throw new Error("Invalid quantity.");
+                }
+                const cartItem = cart.find(item => item.id === itemId);
+                if (cartItem) {
+                    cartItem.qty = newQty;
+                    if (newQty === 0) {
+                        cart = cart.filter(item => item.id !== itemId);
+                    }
+                    renderCart();
+                }
+            } catch (error) {
+                console.error("Error updating quantity:", error.message);
+                errorMessageElement.textContent = error.message;
+            }
+        }
+
+        function addToCart(itemId) {
+            const existingItem = cart.find(item => item.id === itemId);
+            if (existingItem) {
+                updateQuantity(itemId, existingItem.qty + 1);
+            } else {
+                cart.push({ id: itemId, qty: 1 });
+                renderCart();
+            }
+        }
+
+        function updateCartTotal() {
+            let total = 0;
+            cart.forEach(cartItem => {
+                const itemData = itemsData.find(item => item.id === cartItem.id);
+                if (itemData) {
+                    total += itemData.price * cartItem.qty;
+                }
+            });
+            cartTotalDisplay.textContent = `Total: Rs. ${total.toFixed(2)}`;
+        }
+
+        proceedButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Please add items to your cart before proceeding.");
+                return;
+            }
+            alert("Proceeding to checkout (this would normally redirect). Cart data: " + JSON.stringify(cart));
+        });
+
+        fetchItems();
+    </script>
+</body>
+</html>

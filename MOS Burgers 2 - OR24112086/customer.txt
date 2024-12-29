@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS Burgers - Customer</title>
+    <style>
+        * { 
+		margin: 0; 
+		padding: 0; 
+		box-sizing: border-box; 
+		font-family: 'Poppins', sans-serif; 
+	}
+        body { 
+		background-color: #f5f5f5; 
+	}
+
+        /* Top Bar */
+        .top-bar {
+		width: 100%; 
+		height: 30px; 
+		background: white; 
+		border-bottom: 1px solid #eee; 
+		display: flex; 
+		align-items: center; 
+		padding: 0 20px; 
+	}
+        .dots { 
+		display: flex; 
+		gap: 5px; 
+	}
+        .dot { 
+		width: 12px; 
+		height: 12px; 
+		border-radius: 50%; 
+		background: #ddd; 
+	}
+
+        /* Navbar */
+        .navbar { 
+		background: #c0c0c0; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; 
+	}
+        .logo-section { 
+		display: flex; align-items: center; gap: 8px; color: #000; text-decoration: none; 
+	}
+        .logo-image { 
+		width: 40px; height: 40px; margin-right: 10px; border-radius: 4px; 
+	}
+        .logo-text { 
+		font-weight: 500; 
+	}
+        .nav-links { 
+		display: flex; gap: 40px; margin: 0 auto; padding-left: 50px; 
+	}
+        .nav-links a { 
+		text-decoration: none; color: #000; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; 
+	}
+        .auth-buttons { 
+		background: #e0e0e0; padding: 8px 16px; border-radius: 20px; font-size: 14px; 
+	}
+        .auth-buttons a { 
+		text-decoration: none; color: #000; 
+	}
+        .auth-buttons span { 
+		margin: 0 8px; color: #666; 
+	}
+
+        /* Customer Page Styles */
+        .customer-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .customer-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .customer-section h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-control {
+            width: calc(50% - 5px); 
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        .form-group.full-width .form-control{
+            width: 100%;
+        }
+
+        .form-group.address-line .form-control{
+            width: 100%;
+        }
+        .form-group.address-details{
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #555;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover{
+            background-color: #333;
+        }
+
+	.error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo-section">
+            <img src="burger.png" alt="MOS Burgers Logo" class="logo-image">
+            <span class="logo-text"><b>MOS Burgers</b></span>
+        </a>
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="order.html">ORDER</a>
+            <a href="customer.html">CUSTOMER</a>
+            <a href="reports.html">REPORTS</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="SignUp.html">Sign up</a>
+            <span>|</span>
+            <a href="Login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="customer-container">
+        <div class="customer-section" id="registerForm">
+            <h2>Customer Registration</h2>
+            <form>
+                <div class="form-group address-details">
+                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="form-group full-width">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                </div>
+                <div class="form-group address-details">
+                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Confirm Password">
+                </div>
+                <div class="form-group full-width">
+                    <input type="tel" class="form-control" placeholder="Phone Number">
+                </div>
+                <div class="form-group address-line">
+                    <input type="text" class="form-control" placeholder="Address Line 1">
+                </div>
+                <div class="form-group address-line">
+                    <input type="text" class="form-control" placeholder="Address Line 2">
+                </div>
+                <div class="form-group address-details">
+                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control" placeholder="State">
+                    <input type="text" class="form-control" placeholder="Zip Code">
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+
+        <div class="customer-section" id="loginForm">
+            <h2>Existing Customers</h2>
+            <form>
+                <div class="form-group full-width">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                </div>
+                <div class="form-group full-width">
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+
+        <div class="customer-section" id="forgotPasswordSection">
+            <h2>Forgot Password?</h2>
+            <form>
+                <button type="submit" class="btn" id="resetPasswordButton">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm(form) {
+            let isValid = true;
+            const inputs = form.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                const errorMessage = input.nextElementSibling;
+                if (input.value.trim() === "") {
+                    if (errorMessage) {
+                        errorMessage.textContent = "This field is required.";
+                    } else {
+                        const errorSpan = document.createElement('span');
+                        errorSpan.className = 'error-message';
+                        errorSpan.textContent = "This field is required.";
+                        input.parentNode.insertBefore(errorSpan, input.nextSibling);
+                    }
+                    isValid = false;
+                } else if (input.type === "email" && !isValidEmail(input.value)) {
+                    if (errorMessage) {
+                        errorMessage.textContent = "Invalid email format.";
+                    } else {
+                        const errorSpan = document.createElement('span');
+                        errorSpan.className = 'error-message';
+                        errorSpan.textContent = "Invalid email format.";
+                        input.parentNode.insertBefore(errorSpan, input.nextSibling);
+                    }
+                    isValid = false;
+                } else if (input.type === "password" && form.id === "registerForm" && input.placeholder === "Confirm Password") {
+                    const passwordInput = form.querySelector('input[placeholder="Password"]');
+                    if (input.value !== passwordInput.value) {
+                        if (errorMessage) {
+                            errorMessage.textContent = "Passwords do not match.";
+                        } else {
+                            const errorSpan = document.createElement('span');
+                            errorSpan.className = 'error-message';
+                            errorSpan.textContent = "Passwords do not match.";
+                            input.parentNode.insertBefore(errorSpan, input.nextSibling);
+                        }
+                        isValid = false;
+                    }
+                } else if (errorMessage) {
+                    errorMessage.remove();
+                }
+            });
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        const registerForm = document.querySelector('#registerForm form');
+        if (registerForm) {
+            registerForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                if (validateForm(registerForm)) {
+                    alert('Registration Successful (Simulated)');
+                    registerForm.reset();
+                }
+            });
+        }
+
+        const loginForm = document.querySelector('#loginForm form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                if (validateForm(loginForm)) {
+                    alert('Login Successful (Simulated)');
+                    loginForm.reset();
+                }
+            });
+        }
+
+        const resetPasswordButton = document.getElementById('resetPasswordButton');
+        if (resetPasswordButton) {
+            resetPasswordButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.location.href = "ForgotPassword.html";
+            });
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeDiv = document.getElementById("currentTime");
+            if (timeDiv) {
+                timeDiv.textContent = now.toLocaleTimeString();
+            }
+        }
+        setInterval(updateTime, 1000);
+
+        function simulateApiCall() {
+            try {
+                // Simulate an error
+                // throw new Error("API call failed."); // Uncomment to test error handling
+                console.log("no error");
+            } catch (error) {
+                console.error("Error during API call:", error.message);
+                alert("An error occurred. Please try again later.");
+            }
+        }
+    </script>
+    <div id="currentTime" style="text-align: center; margin-top: 20px;"></div>
+</body>
+</html>
